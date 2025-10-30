@@ -90,28 +90,54 @@
             font-size: 2.5em;
             color: var(--primary-color);
             margin-bottom: 40px;
+            padding-top: 40px; /* 新增：標題上方間距 */
         }
 
         /* --- 1. 介紹區塊 (Hero) --- */
         .hero-section {
+            position: relative;
             text-align: center;
             padding: 80px 0;
-            background-color: white;
-            border-radius: var(--border-radius);
-            margin-top: 30px;
+            /* 使用 repo 根目錄的圖片作為背景，並覆蓋整個區塊 */
+            background-image: url("13171.jpg");
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            color: var(--light-text);
+            /* 全寬 banner 不要外圓角或上下間隔 */
+            border-radius: 0;
+            margin-top: 0;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            width: 100vw; /* 確保跨越整個視窗寬度 */
+            left: 50%;
+            right: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* 半透明遮罩，讓文字在明暗不一的背景上仍清晰可讀 */
+        .hero-section::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35));
+            z-index: 0;
         }
 
         .hero-section h2 {
             font-size: 3em;
             margin-bottom: 20px;
-            color: var(--text-color);
+            color: var(--light-text);
+            position: relative;
+            z-index: 1;
         }
 
         .hero-section p {
             font-size: 1.2em;
             max-width: 800px;
             margin: 0 auto 40px;
+            position: relative;
+            z-index: 1;
         }
 
         .intro-cards {
@@ -122,12 +148,24 @@
         }
 
         .intro-cards .card {
-            background-color: var(--accent-color);
+            /* 卡片改為半透明淺色背景，與 hero 的深色遮罩形成對比 */
+            background-color: rgba(248,240,223,0.92); /* 接近 --secondary-color 的半透明版本 */
             color: var(--text-color);
             padding: 15px 30px;
             border-radius: 50px;
             font-weight: bold;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* 內部內容容器（限制寬度並維持內邊距） */
+        .hero-content.container {
+            position: relative;
+            z-index: 1;
+            padding: 80px 20px; /* 可和 hero-section 的 padding 協調 */
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         /* --- 2. & 3. 課程區塊 --- */
@@ -321,19 +359,21 @@
 
     <main>
         <!-- 區塊1: 介紹區塊 -->
-        <section id="about" class="container hero-section">
-            <h2 class="animate-in">🌿 心靈綠洲：尋找內在的平靜</h2>
-            <p class="animate-in delay-1">我們為您精心篩選心理相關課程，專注於中部實體課與不限地區的線上課，助您輕鬆找到最適合自己的療癒之路。</p>
-            <div class="intro-cards">
-                <div class="card animate-in delay-2">專注中部實體課</div>
-                <div class="card animate-in delay-3">精選全國線上課</div>
-                <div class="card animate-in delay-4">每日更新（預留功能）</div>
+        <section id="about" class="hero-section">
+            <div class="container hero-content">
+                <h2 class="animate-in">心靈綠洲：尋找內在的平靜</h2>
+                <p class="animate-in delay-1">我們為您精心篩選心理相關課程，專注於中部實體課與不限地區的線上課，助您輕鬆找到最適合自己的療癒之路。</p>
+                <div class="intro-cards">
+                    <div class="card animate-in delay-2">專注中部實體課</div>
+                    <div class="card animate-in delay-3">精選全國線上課</div>
+                    <div class="card animate-in delay-4">每日更新（預留功能）</div>
+                </div>
             </div>
         </section>
 
         <!-- 區塊2: 實體課程 -->
         <section id="physical" class="course-section container">
-            <h2 class="section-title animate-in">📍 中部地區實體課程</h2>
+            <h2 class="section-title animate-in">中部地區實體課程</h2>
             <div id="physical-courses" class="course-grid">
                 <!-- 課程項目將由 <script> 插入 -->
             </div>
@@ -341,7 +381,7 @@
 
         <!-- 區塊3: 線上課程 -->
         <section id="online" class="course-section container">
-            <h2 class="section-title animate-in">💻 不限地區線上課程</h2>
+            <h2 class="section-title animate-in">不限地區線上課程</h2>
             <div id="online-courses" class="course-grid">
                 <!-- 課程項目將由 <script> 插入 -->
             </div>
