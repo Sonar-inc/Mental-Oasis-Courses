@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>療癒心靈課程精選 | 心靈綠洲</title>
+    
+    <!-- CSS 樣式區域 (原 style.css 內容) -->
+    <style>
+        /* --- 基礎設定與療癒配色 --- */
+        :root {
+            --primary-color: #79A3B1; /* 療癒藍綠色 */
+            --secondary-color: #F8F0DF; /* 溫暖米白色/背景色 */
+            --accent-color: #C6E0A8; /* 柔和淺綠色/點綴色 */
+            --text-color: #333333;
+            --light-text: #ffffff;
+            --padding-unit: 20px;
+            --border-radius: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: '微軟正黑體', 'Microsoft JhengHei', Arial, sans-serif;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--padding-unit);
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: var(--text-color);
+        }
+
+        /* --- Header & Navigation --- */
+        header {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            padding: 15px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 1.8em;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--light-text);
+            margin-left: 20px;
+            font-weight: bold;
+            padding: 5px 0;
+            border-bottom: 2px solid transparent;
+            transition: color 0.3s, border-bottom 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        /* --- 區塊標題與通用樣式 --- */
+        section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+        }
+
+        /* --- 1. 介紹區塊 (Hero) --- */
+        .hero-section {
+            text-align: center;
+            padding: 80px 0;
+            background-color: white;
+            border-radius: var(--border-radius);
+            margin-top: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .hero-section h2 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+
+        .hero-section p {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+
+        .intro-cards {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .intro-cards .card {
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* --- 2. & 3. 課程區塊 --- */
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .course-item {
+            display: block;
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+        }
+
+        .course-item:hover {
+            transform: translateY(-5px); 
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .course-image-container {
+            overflow: hidden;
+            height: 200px; 
+        }
+
+        .course-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .course-item:hover .course-image {
+            transform: scale(1.05); 
+        }
+
+        .course-details {
+            padding: var(--padding-unit);
+        }
+
+        .course-details h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 1.4em;
+        }
+
+        .course-details p {
+            color: #666;
+            font-size: 0.95em;
+            margin-bottom: 8px;
+        }
+
+        .course-details .tag {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        /* --- 4. 聯繫我區塊 (Contact) --- */
+        .contact-section {
+            background-color: white;
+            padding: 60px 0;
+            text-align: center;
+            margin-top: 40px;
+            border-radius: var(--border-radius);
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 30px auto 0;
+            display: grid;
+            gap: 15px;
+        }
+
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        .cta-button {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #5d8a98;
+            transform: translateY(-2px);
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            font-size: 0.9em;
+            margin-top: 40px;
+        }
+
+        /* --- RWD 響應式調整 --- */
+        @media (max-width: 768px) {
+            header .container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-links {
+                margin-top: 10px;
+            }
+
+            .nav-links a {
+                margin: 0 10px;
+            }
+            
+            .section-title, .hero-section h2 {
+                font-size: 2em;
+            }
+
+            .hero-section {
+                padding: 50px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-links a {
+                display: block;
+                margin: 5px 0;
+            }
+        }
+
+        /* --- 微動畫樣式 (由 JS 控制加入) --- */
+        /* 淡入/上滑動畫 */
+        .animate-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .animate-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 { transition-delay: 0.15s; }
+        .delay-2 { transition-delay: 0.3s; }
+        .delay-3 { transition-delay: 0.45s; }
+        .delay-4 { transition-delay: 0.6s; }
+    </style>
+</head>
+<body>
+    <!-- HTML 結構保持不變 -->
+    <header>
+        <nav class="container">
+            <h1>心靈綠洲</h1>
+            <div class="nav-links">
+                <a href="#about">關於本站</a>
+                <a href="#physical">實體課程</a>
+                <a href="#online">線上課程</a>
+                <a href="#contact">聯絡我們</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- 區塊1: 介紹區塊 -->
+        <section id="about" class="container hero-section">
+            <h2 class="animate-in">🌿 心靈綠洲：尋找內在的平靜</h2>
+            <p class="animate-in delay-1">我們為您精心篩選心理相關課程，專注於中部實體課與不限地區的線上課，助您輕鬆找到最適合自己的療癒之路。</p>
+            <div class="intro-cards">
+                <div class="card animate-in delay-2">專注中部實體課</div>
+                <div class="card animate-in delay-3">精選全國線上課</div>
+                <div class="card animate-in delay-4">每日更新（預留功能）</div>
+            </div>
+        </section>
+
+        <!-- 區塊2: 實體課程 -->
+        <section id="physical" class="course-section container">
+            <h2 class="section-title animate-in">📍 中部地區實體課程</h2>
+            <div id="physical-courses" class="course-grid">
+                <!-- 課程項目將由 <script> 插入 -->
+            </div>
+        </section>
+
+        <!-- 區塊3: 線上課程 -->
+        <section id="online" class="course-section container">
+            <h2 class="section-title animate-in">💻 不限地區線上課程</h2>
+            <div id="online-courses" class="course-grid">
+                <!-- 課程項目將由 <script> 插入 -->
+            </div>
+        </section>
+
+        <!-- 區塊4: 聯繫我 -->
+        <section id="contact" class="container contact-section">
+            <h2 class="animate-in">💌 聯繫我們</h2>
+            <p class="animate-in delay-1">如果您有任何建議或想推薦課程，歡迎隨時透過以下方式聯繫我！</p>
+            <form class="contact-form animate-in delay-2" onsubmit="alert('感謝您的訊息！這是一個靜態頁面，訊息不會實際送出。'); return false;">
+                <input type="text" placeholder="您的姓名" required>
+                <input type="email" placeholder="您的Email" required>
+                <textarea placeholder="您的訊息..." rows="4" required></textarea>
+                <button type="submit" class="cta-button">送出訊息</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 心靈綠洲 | 課程資料來源：網路精選</p>
+    </footer>
+
+    <!-- JavaScript 邏輯區域 (原 script.js 內容) -->
+    <script>
+        // 模擬自動化抓取的課程資料 (靜態範例)
+        const courseData = {
+            physical: [
+                { 
+                    title: "內在療癒：情緒釋放工作坊", 
+                    date: "2025/11/15", 
+                    location: "台中市西區", 
+                    link: "https://example.com/physical/emotion-release", 
+                    image: "https://placehold.co/350x200/C6E0A8/79A3B1?text=實體課-情緒",
+                    tag: "情緒管理"
+                },
+                { 
+                    title: "正念減壓八週課程", 
+                    date: "2025/12/01", 
+                    location: "彰化市", 
+                    link: "https://example.com/physical/mindfulness", 
+                    image: "https://placehold.co/350x200/79A3B1/F8F0DF?text=實體課-正念",
+                    tag: "MBSR"
+                },
+                { 
+                    title: "溝通藝術與人際關係", 
+                    date: "2025/12/10", 
+                    location: "南投市", 
+                    link: "https://example.com/physical/communication", 
+                    image: "https://placehold.co/350x200/F8F0DF/333333?text=實體課-溝通",
+                    tag: "人際關係"
+                }
+            ],
+            online: [
+                { 
+                    title: "線上深度催眠與自我探索", 
+                    date: "隨時可上", 
+                    platform: "Zoom", 
+                    link: "https://example.com/online/hypnosis", 
+                    image: "https://placehold.co/350x200/79A3B1/C6E0A8?text=線上課-催眠",
+                    tag: "心理學"
+                },
+                { 
+                    title: "專注力訓練與高效學習法", 
+                    date: "2025/11/20", 
+                    platform: "Google Meet", 
+                    link: "https://example.com/online/focus", 
+                    image: "https://placehold.co/350x200/C6E0A8/79A3B1?text=線上課-專注",
+                    tag: "學習技巧"
+                },
+                { 
+                    title: "寫作療癒與生命故事", 
+                    date: "2025/11/25", 
+                    platform: "Webinar", 
+                    link: "https://example.com/online/writing-therapy", 
+                    image: "https://placehold.co/350x200/F8F0DF/333333?text=線上課-寫作",
+                    tag: "藝術治療"
+                }
+            ]
+        };
+
+        // 函式：生成課程 HTML 結構
+        function renderCourses(type) {
+            const container = document.getElementById(`${type}-courses`);
+            const courses = courseData[type];
+            
+            if (!container || !courses) return;
+
+            container.innerHTML = courses.map(course => `
+                <a href="${course.link}" target="_blank" class="course-item animate-in">
+                    <div class="course-image-container">
+                        <img 
+                            src="${course.image}" 
+                            alt="${course.title}" 
+                            class="course-image"
+                            onerror="this.onerror=null;this.src='https://placehold.co/350x200/E0E0E0/333333?text=圖片載入失敗';"
+                        >
+                    </div>
+                    <div class="course-details">
+                        <h3>${course.title}</h3>
+                        <p>日期：${course.date}</p>
+                        <p>${type === 'physical' ? `地點：${course.location}` : `平台：${course.platform}`}</p>
+                        <span class="tag">${course.tag}</span>
+                    </div>
+                </a>
+            `).join('');
+        }
+
+        // 實作：滾動式微動畫 (Intersection Observer)
+        function setupScrollAnimation() {
+            // 選取所有需要動畫的元素
+            const elements = document.querySelectorAll('.animate-in');
+            
+            const observerOptions = {
+                root: null, // 觀察視窗
+                rootMargin: '0px',
+                threshold: 0.1 // 當元素 10% 進入視圖時觸發
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); // 動畫只需播放一次
+                    }
+                });
+            }, observerOptions);
+
+            elements.forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+
+        // 網頁加載完成後執行
+        document.addEventListener('DOMContentLoaded', () => {
+            // 渲染課程資料
+            renderCourses('physical');
+            renderCourses('online');
+
+            // 啟動滾動動畫
+            setupScrollAnimation();
+        });
+    </script>
+</body>
+</html>
